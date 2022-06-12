@@ -1,0 +1,16 @@
+input.form-control.ng-touched.ng-invalid,
+textarea.form-control.ng-touched.ng-invalid {
+  border-left: 5px solid #a94442;
+}
+
+input.form-control.ng-dirty.ng-valid,
+textarea.form-control.ng-dirty.ng-valid,
+select.form-select.ng-dirty.ng-valid {
+  border-left: 5px solid #42a948;
+}
+
+input.form-control.ng-touched.ng-valid,
+textarea.form-control.ng-touched.ng-valid,
+select.form-select.ng-touched.ng-valid {
+  border-left: 5px solid #42a948;
+}

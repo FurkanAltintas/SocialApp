@@ -1,0 +1,45 @@
+<div class="container" style="margin-top: 100px">
+  <div class="row">
+    <div class="col-md-7">
+      <h3 class="bg-dark text-white p-2">Telefon Kategorisi</h3>
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody *ngIf="products.length; else noProduct">
+          <tr *ngFor="let product of products" [class.bg-secondary]="product.isActive==false">
+            <!-- isActive kolonu false ise class değerine bg-secondary eklenilecek. -->
+            <td>{{ product.id}}</td>
+            <td>{{ product.name }}</td>
+            <td>{{ product.price }}</td>
+            <td>
+              <button class="btn btn-primary btn-sm" (click)="onSelectProduct(product)">Edit</button>
+              &nbsp;
+              <button class="btn btn-danger btn-sm" (click)="deleteProduct(product)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+        <ng-template #noProduct>
+          <tbody>
+            <tr>
+              <td colspan="4" class="text-center">Ürün bulunmamaktadır</td>
+            </tr>
+          </tbody>
+        </ng-template>
+      </table>
+
+      <span class="badge {{ products.length>0?'bg-success':'bg-danger' }} ">{{ products.length }} tane ürün bulunmaktadır</span>
+
+    </div>
+    <div class="col-md-5">
+      <product-details [product]="selectedProduct"></product-details>
+      <hr class="my-3">
+      <product-form> [products]="products"></product-form>
+    </div>
+  </div>
+</div>

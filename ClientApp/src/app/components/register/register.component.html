@@ -1,0 +1,93 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <form #form="ngForm" (ngSubmit)="register()">
+        <h2>Register</h2>
+        <hr>
+
+        <div class="form-group">
+          <div class="form-check">
+            <input [(ngModel)]="user.gender" name="gender" #gender="ngModel" required id="male" value="male"
+              class="form-check-input" type="radio">
+            <label class="form-check-label" for="male">
+              Male
+            </label>
+          </div>
+          <div class="form-check">
+            <input [(ngModel)]="user.gender" name="gender" #gender="ngModel" required id="female" value="female"
+              class="form-check-input" type="radio">
+            <label class="form-check-label" for="female">
+              Female
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <input [(ngModel)]="user.name" name="name" #name="ngModel" required minlength="5"
+            class="form-control" placeholder="Name" type="text">
+          <div *ngIf="name.invalid && name.touched" class="text-muted">
+            <p *ngIf="name.errors?.['required']">Name is required</p>
+            <!-- Dokunduktan sonra hiç bir değer girmez ise gözükecek -->
+            <p *ngIf="name.errors?.['minlength']">Min. 5 characters</p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <input [(ngModel)]="user.username" name="username" #username="ngModel" required minlength="8"
+          class="form-control" placeholder="Username" type="text">
+          <div *ngIf="username.invalid && username.touched" class="text-muted">
+            <p *ngIf="username.errors?.['required']">UserName is required</p>
+            <p *ngIf="username.errors?.['minlength']">Min. 8 characters</p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <input [(ngModel)]="user.email" name="email" #email="ngModel" required email type="email"
+          class="form-control" placeholder="Email">
+          <div *ngIf="email.invalid && email.touched" class="text-muted">
+            <p *ngIf="email.errors?.['required']">Email is required</p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <input [(ngModel)]="user.password" name="password" #password="ngModel" required minlength="8" maxlength="15"
+          type="password" class="form-control" placeholder="Password">
+          <div *ngIf="password.invalid && password.touched" class="text-muted">
+            <p *ngIf="password.errors?.['required']">Password is required</p>
+            <p *ngIf="password.errors?.['minlength']">Min. 8 characters</p>
+            <p *ngIf="password.errors?.['maxlength']">Max. 15 characters</p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <input [(ngModel)]="user.dateOfBirth" name="dateOfBirth" #dateOfBirth="ngModel" [value]="user.dateOfBirth"
+          required type="date" class="form-control">
+          <div *ngIf="dateOfBirth.invalid && dateOfBirth.touched" class="text-muted">
+            <p *ngIf="dateOfBirth.errors?.['required']">DateOfBirth is required</p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <input [(ngModel)]="user.country" name="country" #country="ngModel" required class="form-control"
+          placeholder="Country" type="text">
+          <div *ngIf="country.invalid && password.touched" class="text-muted">
+            <p *ngIf="country.errors?.['required']">Country is required</p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <input [(ngModel)]="user.city" name="city" #city="ngModel" required class="form-control"
+          placeholder="City" type="text">
+          <div *ngIf="city.invalid && password.touched" class="text-muted">
+            <p *ngIf="city.errors?.['required']">City is required</p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <button [disabled]="form.invalid" type="submit" class="btn btn-primary btn-block">Submit</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

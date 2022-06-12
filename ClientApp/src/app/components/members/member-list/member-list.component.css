@@ -1,0 +1,24 @@
+.user_profile_info {
+  border: 1px solid rgba(0,0,0,.125);
+  box-shadow: 5px 10px 15px 5px rgb(0 0 0 / 5%);
+  -webkit-transition: all 0.2s ease-in-out 0s;
+}
+
+.user_profile_info:hover {
+  transform: scale(1.02);
+}
+
+.view-more {
+  text-decoration: none;
+  width: 100%;
+  height: 100%;
+  -webkit-transition: all 0.2s ease-in-out 0s;
+}
+
+.view-more:hover {
+  background-color: rgba(0,0,0,.125);
+}
+
+:color {
+  --bs-gray-dark: rgba(0,0,0,.125);
+}

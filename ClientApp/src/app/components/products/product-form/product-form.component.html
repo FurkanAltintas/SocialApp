@@ -1,0 +1,23 @@
+<h3 class="bg-dark text-white p-2">Ürün Ekle</h3>
+
+<div class="card p-3">
+
+  <div class="mb-3 form-group">
+    <label for="name">name</label>
+    <input #name name="name" type="text" class="form-control">
+  </div>
+
+  <div class="mb-3 form-group">
+    <label for="price">price</label>
+    <input #price name="price" type="number" class="form-control">
+  </div>
+
+  <div class="mb-3 form-check">
+    <input #isActive  id="isActive" type="checkbox" class="form-check-input">
+    <label for="isActive" class="form-check-label">Is Active ?</label>
+  </div>
+
+  <button type="submit" class="btn btn-primary"
+    (click)="addProduct(name.value, price.valueAsNumber, isActive.checked); name.value=null; price.value=null; isActive.checked=null;">Save
+    Product</button>
+</div>

@@ -1,0 +1,25 @@
+<h3 *ngIf="product" class="bg-dark text-white p-2">Ürün Güncelle</h3>
+
+<div *ngIf="product" class="card p-3"> <!-- product nesnesi var ise gösterilecek -->
+
+  <input [value]="product.id" #id name="id" type="number" [hidden]="true">
+
+  <div class="mb-3 form-group">
+    <label for="name">name</label>
+    <input [value]="product.name" #name name="name" type="text" class="form-control">
+  </div>
+
+  <div class="mb-3 form-group">
+    <label for="price">price</label>
+    <input [value]="product.price" #price name="price" type="number" class="form-control">
+  </div>
+
+  <div class="mb-3 form-check">
+    <input [checked]="product.isActive" #isActive  id="isActive" type="checkbox" class="form-check-input">
+    <label for="isActive" class="form-check-label">Is Active ?</label>
+  </div>
+
+  <button class="btn btn-primary btn-sm" (click)="updateProduct(id.valueAsNumber, name.value, price.valueAsNumber, isActive.checked); name.value=null; price.value=null; isActive.checked=null;">
+    Update Product
+  </button>
+</div>

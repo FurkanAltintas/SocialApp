@@ -1,0 +1,88 @@
+<ngx-loading [show]="loading"></ngx-loading>
+
+
+<div class="container mt-3 mb-3">
+  <div class="user-list">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-header">
+            Filters by
+          </div>
+          <div class="card-body">
+            <form #form="ngForm" (ngSubmit)="getUsers()">
+              <div class="row">
+                <div class="col">
+                  <select name="gender" [(ngModel)]="userParams.gender" class="form-select form-select-sm">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                  </select>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col">
+                  <input type="number" name="minAge" [(ngModel)]="userParams.minAge"
+                    class="form-control form-control-sm" placeholder="Min Age">
+                </div>
+                <div class="col">
+                  <input type="number" name="maxAge" [(ngModel)]="userParams.maxAge"
+                    class="form-control form-control-sm" placeholder="Max Age">
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col">
+                  <input type="text" name="country" [(ngModel)]="userParams.country"
+                    class="form-control form-control-sm" placeholder="Country">
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col">
+                  <input type="text" name="city" [(ngModel)]="userParams.city" class="form-control form-control-sm"
+                    placeholder="City">
+                </div>
+              </div>
+              <hr>
+              <div class="d-grid gap-2">
+                <button class="btn btn-outline-primary btn-sm">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9">
+
+        <div class="card mb-3">
+          <div class="card-header">
+            Order By
+          </div>
+          <div class="card-body">
+            <select name="orderby" [(ngModel)]="userParams.orderby" (change)="getUsers()"
+              class="form-select form-select-sm">
+              <!-- col-3 float-right -->
+              <option value="1">Age</option>
+              <option value="2">Created</option>
+              <option value="3">A-Z</option>
+              <option value="4">LastActive</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div *ngFor="let user of users" class="col-lg-4 col-md-4 col-sm-6 col-12">
+            <div class="user_profile_info">
+              <div class="user-up-info">
+                <img src="{{ user.imageUrl || '/assets/images/default-icon.jpg' }}" alt="{{ user.name }}" />
+                <h3>{{ user.name }}, <small> {{ user.age }}</small></h3>
+                <h4 style="height: 10px">{{ user.country }}, {{ user.city }}</h4>
+              </div>
+              <a [routerLink]="['/members', user.id]" class="view-more">View Profile</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+<header class="p-3 bg-dark text-white">
+  <div class="container">
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+      <a routerLink="home" class="navbar-brand d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none home">
+        Social App
+      </a>
+
+      <ul *ngIf="loggedIn()" class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-start mb-md-0 menu">
+        <li><a routerLink="home" routerLinkActive="text-white" class="nav-link px-2 text-secondary">Home</a></li>
+        <li><a routerLink="members" routerLinkActive="text-white" class="nav-link px-2 text-secondary">Members</a></li>
+        <li><a routerLink="friends" routerLinkActive="text-white" class="nav-link px-2 text-secondary">Friends</a></li>
+        <li><a routerLink="messages" routerLinkActive="text-white" class="nav-link px-2 text-secondary">Messages</a></li>
+      </ul>
+      <ul *ngIf="loggedIn()" class="nav">
+        <li><a [routerLink]="['/member/edit']" class="nav-link">{{ name }}</a></li>
+        <li><a (click)="logout()" class="nav-link px-2 text-secondary logout">Logout</a></li>
+      </ul>
+
+      <form *ngIf="!loggedIn()" #form="ngForm" (ngSubmit)="login();" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3 login">
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><input #username="ngModel" [(ngModel)]="user.username" [ngModelOptions]="{standalone: true}" required minlength="5" type="text" class="form-control form-control-dark form-control-sm text-white bg-dark" placeholder="Username"></li>
+          <li><input #password="ngModel" [(ngModel)]="user.password" [ngModelOptions]="{standalone: true}" required minlength="8" type="password" class="form-control form-control-dark form-control-sm text-white bg-dark" placeholder="Password"></li>
+          <li><button [disabled]="form.invalid" type="submit" class="btn btn-outline-light btn-sm me-2">Login</button></li>
+        </ul>
+        <!-- [disabled] = false ise aktif olmaz, true ise aktif olur. Aktif olduğunda buton çalışmaz. -->
+      </form>
+
+    </div>
+  </div>
+</header>
